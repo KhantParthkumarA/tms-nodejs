@@ -9,6 +9,6 @@ import validator from '../middlewares/validator';
 const authRouter = express.Router();
 
 // authRouter.post('/demo-request', AuthMiddleware, create);
-authRouter.post('/demo-request', validator(createDemoRequest, 'body'), create as any);
+authRouter.post('/', validator(createDemoRequest, 'body'), create as any);
 
 export default authRouter;

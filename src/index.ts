@@ -9,6 +9,8 @@ import swaggerUiExpress from "swagger-ui-express";
 import { join } from "path";
 
 import authRouter from './routes/authRoute';
+import demoRequestRouter from './routes/demoRequestRoute';
+
 import { badRequestHandler, unauthorizedHandler, notFoundHandler, internalServerErrorHandler } from "./errorHandlers";
 import { connectDB } from "./config/db.config.js";
 
@@ -32,7 +34,7 @@ app.use(cookieParser())
 
 // Routes
 app.use('/api/v1/auth', authRouter);
-// app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/demo-request', demoRequestRouter);
 
 // Error handlers
 app.use(badRequestHandler)
