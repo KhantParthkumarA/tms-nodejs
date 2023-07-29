@@ -17,6 +17,9 @@ import asyncHandler from '../../middlewares/async';
 // @access    Private/User
 export const create = asyncHandler(async (req: any, res: Response, next: any) => {
   const existingDemoReq = await demoRequestService.getDemoRequest({ clientName: req.body.clientName })
+  if (existingDemoReq) {
+    return errorResponse(req, res, 'Demo request already exists', 409);
+  }
   const demoRequest = await demoRequestService.createDemoRequest({ ...req.body });
 
   if (!demoRequest._id) {
