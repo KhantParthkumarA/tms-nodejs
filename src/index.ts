@@ -8,9 +8,9 @@ import Yaml from "yamljs";
 import swaggerUiExpress from "swagger-ui-express";
 import { join } from "path";
 
-import authRouter from './routes/authRoute.ts';
-import { badRequestHandler, unauthorizedHandler, notFoundHandler, internalServerErrorHandler } from "./errorHandlers.ts";
-import { connectDB } from "./config/db.config.ts";
+import authRouter from './routes/authRoute';
+import { badRequestHandler, unauthorizedHandler, notFoundHandler, internalServerErrorHandler } from "./errorHandlers";
+import { connectDB } from "./config/db.config.js";
 
 dotenv.config({ path: './config/config.env' });
 
@@ -43,5 +43,5 @@ app.use(internalServerErrorHandler)
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-  console.table(listEndpoints(app));
+  console.table(listEndpoints(app as any));
 });
